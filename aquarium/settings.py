@@ -1,4 +1,6 @@
-# Django settings for aquarium project.
+import os
+
+#Django settings for aquarium project.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -12,7 +14,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'E:/mycode/aquarium/sqlite3.db',                      # Or path to database file if using sqlite3.
+        'NAME': os.path.join(os.path.split(os.path.abspath(__file__))[0],'..','sqlite3.db'), # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         'USER': '',
         'PASSWORD': '',
@@ -107,7 +109,6 @@ ROOT_URLCONF = 'aquarium.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'aquarium.wsgi.application'
 
-import os
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
