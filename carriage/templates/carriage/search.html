@@ -1,0 +1,19 @@
+{%extends "carriage/base.html"%}
+
+{%block title%} 搜索页 {%endblock%}
+
+{%block content%}
+<h1> 搜索页 </h1>
+<form method="post" action=""> {% csrf_token %}
+    {{form}}
+    <input type="submit" value="搜索"/>
+</form>
+{%if trspts%}
+<h2> 关于车号的搜索结果 </h2>
+<ul>
+{%for transport in trspts%}
+    <li>{{transport.driver|escape}} | {{transport.date|escape}}</li>
+{%endfor%}
+</ul>
+{%endif%}
+{%endblock%}

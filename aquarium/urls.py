@@ -4,8 +4,6 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
-from carriage import views
-
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'aquarium.views.home', name='home'),
@@ -16,6 +14,5 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', views.IndexView.as_view(), name='index'),
-    (r'^carriage/(?P<crg_id>[^/]+)/$','carriage.views.view_page'),
+    url(r'^carriage/',include('carriage.urls',namespace="carriage")),
 )

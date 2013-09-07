@@ -1,0 +1,117 @@
+- model: carriage.group
+  pk: 1
+  fields:
+    group_name: 周宝华
+- model: carriage.group
+  pk: 2
+  fields:
+    group_name: 张彬
+- model: carriage.group
+  pk: 3
+  fields:
+    group_name: 魏正东
+- model: carriage.group
+  pk: 4
+  fields:
+    group_name: 谢云飞
+- model: carriage.group
+  pk: 5
+  fields:
+    group_name: 刘广三
+    
+- model: carriage.project
+  pk: 1
+  fields:
+    staff: 1
+    proj_name: 北京华昊园林工程有限公司
+    item_name: 华业东方玫瑰
+    distance: 7.0
+    date: 2013-8-26
+- model: carriage.project
+  pk: 2
+  fields:
+    staff: 2
+    proj_name: 北京凯建
+    item_name: 顺义南采公交站
+    distance: 12.0
+    date: 2013-8-26
+    
+- model: carriage.tanker
+  pk: 1
+  fields:
+    lpn: "83377"
+- model: carriage.tanker
+  pk: 2
+  fields:
+    lpn: "3236"
+- model: carriage.tanker
+  pk: 3
+  fields:
+    lpn: "69783"
+- model: carriage.tanker
+  pk: 4
+  fields:
+    lpn: "66928"
+
+- model: carriage.product
+  pk: 1
+  fields:
+    type: C30
+- model: carriage.product
+  pk: 2
+  fields:
+    type: C20
+- model: carriage.product
+  pk: 3
+  fields:
+    type: C10
+- model: carriage.product
+  pk: 4
+  fields:
+    type: C25
+    
+- model: carriage.transport
+  pk: 1
+  fields:
+    crg_id: X123450
+    tanker: 1
+    proj: 1
+    product: 1
+    date: 2013-8-26
+    driver: 魏志伟
+    quantity: 12
+    price: 30
+- model: carriage.transport
+  pk: 2
+  fields:
+    crg_id: X123451
+    tanker: 2
+    proj: 2
+    product: 1
+    date: 2013-8-26
+    driver: 杨双才
+    quantity: 10
+    price: 30
+- model: carriage.transport
+  pk: 3
+  fields:
+    crg_id: X123452
+    tanker: 3
+    proj: 1
+    product: 2
+    date: 2013-8-26
+    driver: 王永生
+    quantity: 15
+    price: 30
+- model: carriage.transport
+  pk: 4
+  fields:
+    crg_id: X123453
+    tanker: 3
+    proj: 2
+    product: 3
+    date: 2013-8-27
+    driver: 姚亚军
+    quantity: 18
+    price: 30
+  

@@ -37,3 +37,6 @@ def view_page(request,crg_id):
         return specialPages[crg_id](request)
     return render_to_response("view.html",
             )
+
+def view_stat(request):
+    return render_to_response('carriage/stat.html',)

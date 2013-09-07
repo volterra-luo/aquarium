@@ -1,0 +1,35 @@
+{%extends "carriage/base.html"%}
+
+{%block title%} 开始页 {%endblock%}
+
+{% block content %}
+	{% if latest_transport_list %}
+	<table>
+	<tr>
+        <th>运输单号</th>
+        <th>项目名称</th>
+        <th>产品型号</th>
+        <th>司机姓名</th>
+        <th>单次运量（方）</th>
+        <th>日期</th>
+        <th>单价</th>           
+    </tr>
+    {% for trans in latest_transport_list %}
+    <tr>
+        <td>{{ trans.crg_id }} </td>
+        <td>{{ trans.proj}}</td> 
+        <td>{{trans.product}}</td>
+        <td>{{trans.driver}}</td>
+        <td>{{ trans.quantity }}</td>
+        <td> {{trans.date}} </td>
+        <td>{{trans.date}}</td>
+		<td>{{trans.price}}</td>
+    </tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <p>目前没有可显示项目.</p>
+{% endif %}
+<hr>
+&copy; 2013 - 
+{% endblock %}

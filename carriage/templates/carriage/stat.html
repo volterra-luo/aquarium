@@ -1,0 +1,84 @@
+{%extends "carriage/base.html"%}
+
+{%block content%}
+<h1>运费统计分类图</h1>
+		<!--<p>按司机姓名显示运费比例</p>-->
+		<div id="chartNode" style="width:250px;height:250px;">按司机姓名显示运费比例</div>
+		
+		<!-- load dojo and provide config via data attribute -->
+		<!-- load dojo -->
+		<script src="//ajax.googleapis.com/ajax/libs/dojo/1.9.1/dojo/dojo.js"></script>
+		<script>
+			
+			// Require the basic 2d chart resource: Chart
+			// Retrieve the Tooltip class
+			// Require the theme of our choosing
+			require(["dojox/charting/Chart", "dojox/charting/action2d/Tooltip", "dojox/charting/themes/Claro", "dojox/gfx/fx", "dojox/charting/plot2d/Pie", "dojox/charting/axis2d/Default", "dojo/domReady!"], 
+					function(Chart, Tooltip, Claro, gfxFx) {
+				
+				// Define the data
+				var chartData = [10000,9200,11811,12000,7662,13887,14200,12222,12000,10009,11288,12099];
+				
+				// Create the chart within it's "holding" node
+				var chart = new Chart("chartNode");
+
+				// Set the theme
+				chart.setTheme(Claro);
+
+				// Add the only/default plot 
+				chart.addPlot("default", {
+					type: "Pie",
+					markers: true
+				});
+				
+				// Add axes
+				chart.addAxis("x");
+				chart.addAxis("y", { min: 5000, max: 30000, vertical: true, fixLower: "major", fixUpper: "major" });
+
+				// Add the series of data
+				chart.addSeries("Trans - Fees 2013", chartData);
+				
+				// Create the tooltip
+				var tip = new Tooltip(chart, "default");
+				
+				// Render the chart!
+				chart.render();
+				
+				// Add a mouseover event to the plot
+				chart.connectToPlot("default",function(evt) {
+					// Output some debug information to the console
+					console.warn(evt.type," on element ",evt.element," with shape ",evt.shape);
+					// Get access to the shape and type
+					var shape = evt.shape, type = evt.type;
+					// React to mouseover event
+					if(type == "onclick") {
+						// Update its fill
+						var rotateFx = new gfxFx.animateTransform({
+							duration: 1200,
+							shape: shape,
+							transform: [
+								{ name: 'rotategAt', start: [0,240,240], end: [360,240,240] }
+							]
+						}).play();
+					}
+					// If it's a mouseover event
+					else if(type == "onmouseover") {
+						// Store the original color
+						if(!shape.originalFill) {
+							shape.originalFill = shape.fillStyle;
+						}
+						// Set the fill color to pink
+						shape.setFill("pink");
+					}
+					// If it's a mouseout event
+					else if(type == "onmouseout") {
+						// Set the fill the original fill
+						shape.setFill(shape.originalFill);
+					}
+					
+				});
+				
+			});
+			
+		</script>
+{%endblock%}
