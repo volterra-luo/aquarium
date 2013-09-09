@@ -1,17 +1,15 @@
+{% load staticfiles %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-		<meta charset="utf-8">
-		<link rel="stylesheet" href="style.css" media="screen">
-		<link rel="stylesheet" href="../../../resources/style/demo.css" media="screen">
-		<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/dojo/1.9.1/dijit/themes/claro/claro.css" media="screen">
-        <title>{% block title %}{% endblock %}</title>
+		<title>{% block title %}{% endblock %}</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'carriage/style.css' %}"/>
     </head>
-    <body class="claro">
+    <body>
     <div>
-	<h1><a href="/carriage/">宝隆建材</a></h1>
+	<h1><a href="/carriage/">宝隆建材</a></h1> <a href="/carriage/accounts/google/login/">登陆</a> <br/>
     目 录: <a href={% url 'carriage:stat' %}> 统计页 </a> | <a href={% url 'carriage:index' 'SearchPage' %}>搜索页</a>
     | <a href="/admin/" %}> 数据录入 </a>
     </div>
